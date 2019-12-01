@@ -6,7 +6,7 @@ public class Shoot : MonoBehaviour //lets you shoot when you have a weapon in yo
 {
     private void Start()
     {
-        Inventory.Add(AllLoot.TestGun()); //adds a test gun to you inventory, to test shooting
+        Inventory.Add(AllLoot.Glock()); //adds a test gun to you inventory, to test shooting
     }
 
     float timer = float.MaxValue; //time since your last shot

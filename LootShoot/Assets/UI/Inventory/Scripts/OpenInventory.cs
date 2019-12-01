@@ -44,8 +44,13 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
         {
             LoadItems(); //create buttons
             MasterUpdate(); //update buttons text
+            Time.timeScale = 0;
         }
-        if (!open) RemoveItems(); //remove all items
+        if (!open)
+        {
+            RemoveItems(); //remove all items
+            Time.timeScale = 1;
+        }
 
         if (!open && !Inventory.swapLoot.empty) Inventory.Drop(Inventory.swapLoot.num, Inventory.swapLoot.amount, true, 0, GameObject.Find("Player").transform); //drop loot in swap loot slot if it's not empty
 
@@ -57,6 +62,7 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     {
         currentHand = Instantiate(HandSlot); //create hand item
         currentHand.transform.SetParent(transform); //set parent for acces
+        currentHand.transform.localPosition = Vector3.zero;
 
         currentTemp = Instantiate(TempSlot); //same as above for swap loot
         currentTemp.transform.SetParent(transform);

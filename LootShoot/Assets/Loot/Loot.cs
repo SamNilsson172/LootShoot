@@ -34,6 +34,9 @@ public static class AllLoot //static calss containing methods creating all items
 
     public static Loot Coin(int amount) => new Loot("Sprites/Coin", "Meshes/Coin", "Coin", amount, 16, .1f, false, false, 0); //method for a coin
 
-    static Loot TestGunBase() => new Loot("Sprites/Gun", "Meshes/TestGun", "Test Gun", 1, 1, 4, true, false, 1); //method for item values of a test gun
-    public static Weapon TestGun() => new Weapon(TestGunBase(), 1, .2f, 50, "Meshes/Bullet"); //method for creating a test gun, 100 is highest tested working speed value, more and it might not work
+    static Loot GlockBase() => new Loot("Sprites/Gun", "Meshes/TestGun", "Glock", 1, 1, 4, true, false, 1); //method for item values of a glock
+    public static Weapon Glock() => new Weapon(GlockBase(), 1, .2f, 50, "Meshes/Bullet"); //method for creating a glock
+
+    static Loot MusketBase() => new Loot("Sprites/Musket", "Meshes/Musket", "Musket", 1, 1, 12, true, false, 2); //method for item values of a musket
+    public static Weapon Musket() => new Weapon(MusketBase(), 3, 1.5f, 75, "Meshes/Bullet"); //method for creating a musket
 }

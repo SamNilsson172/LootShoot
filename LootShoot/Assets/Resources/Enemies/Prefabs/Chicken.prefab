@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2615569988917064934}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 3.47, z: 1.4}
+  m_LocalPosition: {x: 9.2, y: 1.21, z: 11.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  drops: 0000000001000000
+  drops: 0000000002000000
   dropRates: 6400000014000000
   dropAmount: 0500000001000000
 --- !u!114 &5473602599593359415
@@ -140,3 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c23d80642f43b4cafe8fa71ea73205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisEnemy: {fileID: 0}

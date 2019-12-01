@@ -23,7 +23,8 @@ public class LootInstance : MonoBehaviour //behaviour of loot as a game object
     Loot Instance() //creates the loot
     {
         if (lootNum == 0) return AllLoot.Coin(amount);
-        if (lootNum == 1) return AllLoot.TestGun();
+        if (lootNum == 1) return AllLoot.Glock();
+        if (lootNum == 2) return AllLoot.Musket();
 
         Debug.LogError("Number for loot dosn't exist");
         return null;

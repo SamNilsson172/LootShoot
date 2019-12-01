@@ -19,7 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (value <= 0) // if hp is less than 0
             {
                 thisEnemy.Drop(); //drop loot when dead
-                Destroy(gameObject); //it's dead so destroy it
+                gameObject.SetActive(false); //don't destroy it to acces its components
                 hp = 0; //set hp to 0 so it won't be negative
             }
             else hp = value;
