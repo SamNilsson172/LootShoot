@@ -17,7 +17,7 @@ public class Move : MonoBehaviour //lets player move
         Cursor.lockState = CursorLockMode.Locked; //mouse is locked to middle of screen
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetAxisRaw("Vertical") > 0) //press up key
         {

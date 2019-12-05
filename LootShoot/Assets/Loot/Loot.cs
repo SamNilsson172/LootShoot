@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class Loot //class for all items, with all necessary values
 {
     public readonly string spritePath; //save path to sprite instead of actual sprite to be able to serialize, loads form path with resources.load

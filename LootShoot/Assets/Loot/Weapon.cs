@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
 
+[Serializable]
 public class Weapon : Loot //class for weapon that are a type of loot
 {
     public readonly float dmg; //how much damage it deals

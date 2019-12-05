@@ -25,9 +25,14 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     {
         if (Input.GetKeyDown(KeyCode.Tab)) //open and close inventory on tab, use get button for better customization
         {
-            open = !open; //change between open and close
-            OpenOrClose(open); //open or close it depending on open variable
+            Show();
         }
+    }
+
+    public void Show()
+    {
+        open = !open; //change between open and close
+        OpenOrClose(open); //open or close it depending on open variable
     }
 
     void OpenOrClose(bool open) //change values depending on if inventory is closed or open

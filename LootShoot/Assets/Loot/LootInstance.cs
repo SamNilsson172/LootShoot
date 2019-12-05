@@ -17,7 +17,7 @@ public class LootInstance : MonoBehaviour //behaviour of loot as a game object
         GetComponent<MeshCollider>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().sharedMaterial = Resources.Load<GameObject>(thisLoot.meshPath).GetComponent<MeshRenderer>().sharedMaterial;
         GetComponent<Rigidbody>().mass = thisLoot.weight;
-        name = thisLoot.name + "(instance)";
+        name = thisLoot.name + "(loot instance)";
     }
 
     Loot Instance() //creates the loot

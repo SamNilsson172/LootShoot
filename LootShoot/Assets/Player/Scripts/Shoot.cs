@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour //lets you shoot when you have a weapon in yo
 
     float timer = float.MaxValue; //time since your last shot
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         timer += Time.deltaTime; //increase the timer
         if (Inventory.loots.Count > 0) //if a loot instance is in your hand
