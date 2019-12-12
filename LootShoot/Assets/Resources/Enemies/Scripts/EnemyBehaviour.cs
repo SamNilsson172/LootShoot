@@ -34,8 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
         hp = thisEnemy.hp; //set hp on start
     }
 
-    private void Update()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 3 * Time.deltaTime); //move to player
-    }
+    //private void Update()
+    //{
+    //    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 3 * Time.deltaTime); //move to player
+    //}
 }
