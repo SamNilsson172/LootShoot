@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
 {
-    public Move move; //players move script, pause when inventory is open
+    public Look look; //players look script, pause when inventory is open
+    public Move move;
     public Shoot shoot; //players shoot script, pause when inventory is open
     public CanvasGroup canvas; //get canvas group to make UI stuff invisible
     bool open; //if inventory is visable  or not
@@ -42,7 +43,8 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
         canvas.blocksRaycasts = open; //set raycast blockage
         Cursor.visible = open; //set cursor visability
         Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked; //set if cursor is movable
-        move.enabled = !open; //enable and diasble scripts
+        look.enabled = !open; //enable and diasble scripts
+        move.enabled = !open;
         shoot.enabled = !open;
 
         if (open)

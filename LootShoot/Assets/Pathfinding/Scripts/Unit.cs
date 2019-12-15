@@ -6,7 +6,7 @@ public class Unit : MonoBehaviour
 {
     const float minPathUpdateTime = .5f;
     const float pathUpdateMoveThreshhold = .5f;
-    const int acceptedSizeDifference = 5;
+    const float acceptedSizeDifference = .5f;
 
     Transform target;
     int targetIndex;
@@ -78,7 +78,7 @@ public class Unit : MonoBehaviour
             StartCoroutine("FollowPath");
         }
         if (!pathSuccessful)
-            Debug.LogError("not found");
+            Debug.LogWarning("not found");
     }
 
     System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();

@@ -89,7 +89,7 @@ public class Pathfinding : MonoBehaviour
     {
         List<Vector3> waypoints = new List<Vector3>();
         Vector2 dirOld = Vector2.zero;
-        waypoints.Add(path[0].worldPosition);
+        if (path.Count > 0) waypoints.Add(path[0].worldPosition);
 
         for (int i = 1; i < path.Count; i++)
         {
@@ -113,7 +113,7 @@ public class Pathfinding : MonoBehaviour
     {
         if (nodeA != null && nodeB != null)
         {
-            
+
             int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
             int dstZ = Mathf.Abs(nodeA.gridZ - nodeB.gridZ);
             int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
