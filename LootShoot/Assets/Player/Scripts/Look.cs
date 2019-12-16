@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Look : MonoBehaviour //lets player move 
 {
+    public Transform cameraTrans;
     public float sensitivity = 2.5f; //sensitivity of mouse
     float xPos; //x position of mouse
     float yPos; //y position of mouse
@@ -23,5 +24,10 @@ public class Look : MonoBehaviour //lets player move
         yPos = Mathf.Clamp(yPos, -90, 90);
 
         transform.rotation = Quaternion.Euler(yPos, xPos, 0);
+
+        //if (Physics.Raycast(transform.position, cameraTrans.localPosition, out RaycastHit hit, 4))
+        //{
+        //    camera.position = hit.point;
+        //}
     }
 }
