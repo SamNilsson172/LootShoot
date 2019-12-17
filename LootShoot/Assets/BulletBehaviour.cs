@@ -22,7 +22,9 @@ public class BulletBehaviour : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, speed * Time.deltaTime + speed / 20) && !alreadyDead) //will the bullet hit something this frame and has not already hit something
         {
             if (hit.transform.gameObject.tag == "Enemy") //if it hits an enemy
+            {
                 hit.transform.gameObject.GetComponent<EnemyBehaviour>().Hp -= dmg; //damage the enemy
+            }
 
             alreadyDead = true; //the bullet will soon hit somthing
             dieHere = hit.point; //the point the bullet will hit something in
