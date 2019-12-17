@@ -201,6 +201,8 @@ public class Unit : MonoBehaviour
 
             yield return null; //wait one frame
         }
+        //Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+        //yield return null; //wait one frame
     }
 
     //void FindNextPath()

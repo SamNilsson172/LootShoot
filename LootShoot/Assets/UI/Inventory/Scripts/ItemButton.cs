@@ -9,6 +9,11 @@ public class ItemButton : MonoBehaviour
     public Text text;
     public Image image;
 
+    private void Start()
+    {
+        
+    }
+
     public void UpdateText() //updates text
     {
         if (Inventory.loots.Count > 0) //if inventory contains something, if the text reads button somthings fucked
