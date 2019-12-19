@@ -5,7 +5,7 @@ using System;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    public float speed = 1; //how fats id the bullet going
+    public float speed = 1; //how fast is the bullet going
     public float dmg; //how much damage will the bullet deal
     float timer; //timer for how long the bullet will live
     bool alreadyDead = false; //if the raycast predicts that it will hit something
@@ -21,14 +21,17 @@ public class BulletBehaviour : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, speed * Time.deltaTime + speed / 20) && !alreadyDead) //will the bullet hit something this frame and has not already hit something
         {
-            if (hit.transform.gameObject.tag == "Enemy") //if it hits an enemy
-            {
-                hit.transform.gameObject.GetComponent<EnemyBehaviour>().Hp -= dmg; //damage the enemy
-            }
-
             alreadyDead = true; //the bullet will soon hit somthing
             dieHere = hit.point; //the point the bullet will hit something in
             dir = hit.point - transform.position; //the direction the bullet is traveling in
+
+            if (hit.transform.gameObject.tag == "Enemy") //if it hits an enemy
+            {
+                hit.transform.gameObject.GetComponent<EnemyBehaviour>().Hp -= dmg; //damage the enemy
+                Vector3 knockback = dir * dmg / hit.transform.gameObject.GetComponent<EnemyBehaviour>().thisEnemy.hp;
+                hit.transform.gameObject.GetComponent<Rigidbody>().AddForce(knockback * 100);
+                Debug.Log(knockback * 100);
+            }
         }
 
         transform.localPosition += transform.forward * speed * Time.deltaTime; //go forward

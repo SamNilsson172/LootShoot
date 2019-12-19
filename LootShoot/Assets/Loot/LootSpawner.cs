@@ -14,4 +14,15 @@ public class LootSpawner : MonoBehaviour
         newLoot.DefineMe(); //give the loot it's apperance and instanciate loot
         return lootObj;
     }
+
+    public static Loot GetLootFromNum(int num, int amount)
+    {
+        if (num == 0) return AllLoot.Coin(amount);
+        if (num == 1) return AllLoot.Glock();
+        if (num == 2) return AllLoot.Musket();
+        if (num == 3) return AllLoot.Svante();
+
+        Debug.LogError("Number for loot dosn't exist");
+        return null;
+    }
 }

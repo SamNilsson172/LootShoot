@@ -41,4 +41,7 @@ public static class AllLoot //static calss containing methods creating all items
 
     static Loot MusketBase() => new Loot("Sprites/Musket", "Meshes/Musket", "Musket", 1, 1, 12, true, false, 2); //method for item values of a musket
     public static Weapon Musket() => new Weapon(MusketBase(), 3, 1.5f, 75, "Meshes/Bullet"); //method for creating a musket
+
+    static Loot SvanteBase() => new Loot("Sprites/Gun", "Meshes/TestGun", "Svante", 1, 1, 0.1f, true, false, 3);
+    public static Weapon Svante() => new Weapon(SvanteBase(), 10000, .15f, 30, "Meshes/Svante");
 }
