@@ -28,9 +28,8 @@ public class BulletBehaviour : MonoBehaviour
             if (hit.transform.gameObject.tag == "Enemy") //if it hits an enemy
             {
                 hit.transform.gameObject.GetComponent<EnemyBehaviour>().Hp -= dmg; //damage the enemy
-                Vector3 knockback = dir * dmg / hit.transform.gameObject.GetComponent<EnemyBehaviour>().thisEnemy.hp;
-                hit.transform.gameObject.GetComponent<Rigidbody>().AddForce(knockback * 100);
-                Debug.Log(knockback * 100);
+                Vector3 knockback = new Vector3(dir.x, hit.transform.position.y + 1.2f, dir.z); //get knockback direction from bullets dir, add some to y axis so it jumps up
+                hit.transform.gameObject.GetComponent<Rigidbody>().AddForce(knockback * 30); //apply knockback force
             }
         }
 
