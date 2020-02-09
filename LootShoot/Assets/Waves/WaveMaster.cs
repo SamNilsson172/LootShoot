@@ -8,8 +8,7 @@ public class WaveMaster : MonoBehaviour
     public bool hard;
     public bool normal; //bools that define what waves that will spawn
     public bool easy;
-    public Transform[] spawnPoints; //points where enemies can spawn
-    public GameObject exit;
+    public Transform[] spawnPoints; //points where anemies can spawn
 
     Wave[] waves; //array for the enemies that will spawn
     int currentWave = 0; //index for waves, syays what wave your on
@@ -79,11 +78,7 @@ public class WaveMaster : MonoBehaviour
     {
         foreach (GameObject g in spawnedEnemies) Destroy(g);
         spawnedEnemies.Clear();
-        if (currentWave >= waves.Length)
-        {
-            waveNum.text = "You won!";
-            exit.SetActive(true);
-        }
+        if (currentWave >= waves.Length) waveNum.text = "You won!";
         else
         {
             waveNum.text = "Wave " + (currentWave + 1);
