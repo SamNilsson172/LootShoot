@@ -27,8 +27,9 @@ public static class Serialization //serializes and deserializes savefiles
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
-            return null;
+            Debug.LogWarning("Save file not found in " + path);
+            SaveFile emptySave = new SaveFile(null);
+            return emptySave;
         }
     }
 }

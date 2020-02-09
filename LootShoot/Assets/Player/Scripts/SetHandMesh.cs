@@ -10,10 +10,11 @@ public class SetHandMesh : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (mf.sharedMesh != Resources.Load<Mesh>(Inventory.loots[0].meshPath))
-        {
-            mf.sharedMesh = Resources.Load<Mesh>(Inventory.loots[0].meshPath);
-            mr.sharedMaterial = Resources.Load<GameObject>(Inventory.loots[0].meshPath).GetComponent<MeshRenderer>().sharedMaterial;
-        }
+        if (Inventory.loots.Count > 0) //if inventory is not empty
+            if (mf.sharedMesh != Resources.Load<Mesh>(Inventory.loots[0].meshPath)) //and the hand mesh is not the same as the first lot in inventory
+            {
+                mf.sharedMesh = Resources.Load<Mesh>(Inventory.loots[0].meshPath); //set hand mesh to first inv slot
+                mr.sharedMaterial = Resources.Load<GameObject>(Inventory.loots[0].meshPath).GetComponent<MeshRenderer>().sharedMaterial;
+            }
     }
 }

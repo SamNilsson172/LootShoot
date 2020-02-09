@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour //lets you shoot when you have a weapon in your hand
 {
-    private void Start()
-    {
-        Inventory.Add(AllLoot.Glock()); //adds a test gun to you inventory, to test shooting
-    }
-
     float timer = float.MaxValue; //time since your last shot
     // Update is called once per frame
     void Update()
