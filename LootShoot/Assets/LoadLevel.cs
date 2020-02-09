@@ -11,7 +11,8 @@ public class LoadLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(LevelName,LoadSceneMode.Single);
+            SaveFunctions.Save();
+            SceneManager.LoadScene(LevelName, LoadSceneMode.Single);
         }
     }
 }

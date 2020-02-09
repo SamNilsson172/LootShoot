@@ -79,19 +79,19 @@ public class WaveMaster : MonoBehaviour
     {
         foreach (GameObject g in spawnedEnemies) Destroy(g);
         spawnedEnemies.Clear();
-        if (currentWave >= waves.Length)
+        if (currentWave >= waves.Length) //you won
         {
             waveNum.text = "You won!";
-            exit.SetActive(true);
+            exit.SetActive(true); //open the exit
         }
-        else
+        else //start new wave
         {
-            waveNum.text = "Wave " + (currentWave + 1);
-            SpawnEnemies();
+            waveNum.text = "Wave " + (currentWave + 1); //increase wave count
+            SpawnEnemies(); //spawn new enemies
         }
     }
 
-    public bool AllDead()
+    public bool AllDead() //check if all enemies in the wave are dead
     {
         float totHp = 0;
         foreach (GameObject g in spawnedEnemies)

@@ -11,7 +11,7 @@ public class ItemButton : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public void UpdateText() //updates text
@@ -33,7 +33,10 @@ public class ItemButton : MonoBehaviour
 
     public void Swap() //swaps stuff
     {
-        Inventory.Swap(index);
-        GameObject.Find("Inventory").GetComponent<OpenInventory>().MasterUpdate(); //update all text when swap has occured
+        if (Inventory.loots.Count > 0) //hand buton still exists even if inventory is empty, so make sure it's not to swap
+        {
+            Inventory.Swap(index);
+            GameObject.Find("Inventory").GetComponent<OpenInventory>().MasterUpdate(); //update all text when swap has occured
+        }
     }
 }
