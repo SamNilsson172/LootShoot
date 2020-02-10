@@ -42,11 +42,17 @@ public class Move : MonoBehaviour
             activeSpeed = speed; //reset speed
         }
 
-        if (Input.GetButtonDown("Jump") && canJump)
+        if (Input.GetButtonDown("Jump") && canJump) //add low jump / dynamic jump
         {
+            print("Jump");
             rb.AddForce(new Vector3(0, jumpForece, 0), ForceMode.Impulse);
             canJump = false;
         }
+        if (rb.velocity.y < 0 && !canJump)
+        {
+            rb.velocity = Vector3.up * Physics.gravity.y * 2;
+        }
+        print(canJump);
     }
 
     private void OnCollisionEnter(Collision collision)
