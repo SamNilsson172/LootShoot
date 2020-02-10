@@ -11,6 +11,11 @@ public class Move : MonoBehaviour
     bool canJump = true;
     public float jumpForece = 5;
 
+    private void Start()
+    {
+        SaveFunctions.Load();
+    }
+
     // Update is called once per frame
     void Update()
     {

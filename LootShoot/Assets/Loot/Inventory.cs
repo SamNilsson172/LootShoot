@@ -6,7 +6,6 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
 {
     public static List<Loot> loots = new List<Loot>(); //list for all loot, use list to easily add and remove stuff, would be smarter to use arrays cuz now you can acces loots.Add from other scripts
     public static Loot swapLoot = AllLoot.Empty(); //a slot to put loot in when swaping placements in inventory
-    //should make a loot for hand instead of using loots[0]
     public static int slots = 10; //how many loot slots the inventory contains
 
     public static bool Add(Loot loot) //adds given loot to inventory, returns bool to know if it worked or not for error messages

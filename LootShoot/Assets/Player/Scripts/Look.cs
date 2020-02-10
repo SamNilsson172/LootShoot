@@ -25,7 +25,7 @@ public class Look : MonoBehaviour //lets player move
 
         transform.rotation = Quaternion.Euler(yPos, xPos, 0);
 
-        //if (Physics.Raycast(transform.position, cameraTrans.localPosition, out RaycastHit hit, 4))
+        //if (Physics.Raycast(transform.position, cameraTrans.localPosition, out RaycastHit hit, 4)) //spring arm
         //{
         //    camera.position = hit.point;
         //}

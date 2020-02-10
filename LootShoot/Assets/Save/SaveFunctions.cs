@@ -13,7 +13,16 @@ public static class SaveFunctions
 
     public static void Load()
     {
-        Debug.Log("Loaded");
-        Inventory.loots = Serialization.Load().loots; //get the content of inventory from savefile
+        List<Loot> newLoots = Serialization.Load().loots; //get savefile from computer
+
+        if (newLoots != null) //if savefile exists
+        {
+            Debug.Log("Loaded");
+            Inventory.loots = newLoots; //get the content of inventory from savefile
+        }
+        else
+        {
+            Save(); //if savefile does not exist create it
+        }
     }
 }
