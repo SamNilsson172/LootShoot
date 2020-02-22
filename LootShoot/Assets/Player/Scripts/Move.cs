@@ -8,7 +8,7 @@ public class Move : MonoBehaviour
     float activeSpeed = 5; //what speed your currently moving at
     public Transform cameraAngle;
     public Rigidbody rb;
-    bool canJump = true;
+    bool canJump = false;
     public float jumpForece = 5;
 
     private void Start()
@@ -17,7 +17,7 @@ public class Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.eulerAngles = new Vector3(0, cameraAngle.eulerAngles.y, 0);
 
@@ -47,25 +47,31 @@ public class Move : MonoBehaviour
             activeSpeed = speed; //reset speed
         }
 
-        if (Input.GetButtonDown("Jump") && canJump) //add low jump / dynamic jump
+        if (rb.velocity.y < 0 && !canJump)
         {
-            print("Jump");
+            Physics.gravity = Vector3.up * -9.8f * 3;
+        }
+        if (Input.GetButton("Jump") && canJump) //add low jump / dynamic jump
+        {
             rb.AddForce(new Vector3(0, jumpForece, 0), ForceMode.Impulse);
             canJump = false;
         }
-        if (rb.velocity.y < 0 && !canJump)
-        {
-            rb.velocity = Vector3.up * Physics.gravity.y * 2;
-        }
-        print(canJump);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground"))
         {
             canJump = true;
+            Physics.gravity = new Vector3(0, -9.8f, 0);
         }
+    }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canJump = false;
+        }
     }
 }

@@ -949,7 +949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAngle: {fileID: 2268520769241681848}
   rb: {fileID: 2268520768373427292}
-  jumpForece: 5
+  jumpForece: 3
 --- !u!1 &2268520769008081629
 GameObject:
   m_ObjectHideFlags: 0

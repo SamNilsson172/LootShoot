@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAndHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 2268520768373427296, guid: 96cf1c4a455607a4589a8c3040bcb303,
+        type: 3}
+      propertyPath: jumpForece
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2268520768373427297, guid: 96cf1c4a455607a4589a8c3040bcb303,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -336,7 +341,7 @@ GameObject:
   - component: {fileID: 1816198482}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
