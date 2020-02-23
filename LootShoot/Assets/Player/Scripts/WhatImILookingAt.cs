@@ -49,7 +49,7 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
             if (Input.GetKeyDown(KeyCode.E))
             {
                 loot = false;
-                lootLookingAt.AddToInventory();
+                lootLookingAt.AddToInventory(GetComponent<InventoryInstance>().myInv);
             }
             lootText.text = lootLookingAt.name + "\r\n" + lootLookingAt.amount + " x" + "\r\n" + "Press E";
         }

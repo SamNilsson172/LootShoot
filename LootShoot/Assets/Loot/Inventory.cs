@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Inventory //static cus only 1 inventory, only tedious to refer to an instance
+public class Inventory 
 {
-    public static List<Loot> loots = new List<Loot>(); //list for all loot, use list to easily add and remove stuff, would be smarter to use arrays cuz now you can acces loots.Add from other scripts
-    public static Loot swapLoot = AllLoot.Empty(); //a slot to put loot in when swaping placements in inventory
-    public static int slots = 10; //how many loot slots the inventory contains
+    public List<Loot> loots = new List<Loot>(); //list for all loot, use list to easily add and remove stuff, would be smarter to use arrays cuz now you can acces loots.Add from other scripts
+    public Loot swapLoot = AllLoot.Empty(); //a slot to put loot in when swaping placements in inventory
+    public int slots = 10; //how many loot slots the inventory contains
 
-    public static bool Add(Loot loot) //adds given loot to inventory, returns bool to know if it worked or not for error messages
+    public bool Add(Loot loot) //adds given loot to inventory, returns bool to know if it worked or not for error messages
     {
         bool added = false;
 
@@ -35,7 +35,7 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
         return added; //adding didn't work
     }
 
-    public static bool Remove(Loot loot) //removes given loot from inventory, returns bool to know if it worked or not for error messages
+    public bool Remove(Loot loot) //removes given loot from inventory, returns bool to know if it worked or not for error messages
     {
         if (loots.Contains(loot)) //if given loot is in inventory 
         {
@@ -45,7 +45,7 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
         return false; //removing didn't work
     }
 
-    public static void Swap(int index) //swaps item between temploot slot and the slot you clicked
+    public void Swap(int index) //swaps item between temploot slot and the slot you clicked
     {
         Loot temp = null; //variable to temporarily store loot in, set to null to avoid unassigned variable error, only temp 
         if (!swapLoot.weapon) temp = NewInstance(swapLoot); //set temp to a copy of the swap loot item
@@ -57,14 +57,14 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
         loots[index] = temp; //set clicked item slot to temp variable
     }
 
-    public static void Drop(int lootNum, int amount, bool swapItem, int index, Transform dropPos) //moves an item from inventory to game world, needs loot num to identify it, swap bool to know if it's in loot or swapLoot slot, needs index if it's not and a transform to know where to drop it
+    public void Drop(int lootNum, int amount, bool swapItem, int index, Transform dropPos) //moves an item from inventory to game world, needs loot num to identify it, swap bool to know if it's in loot or swapLoot slot, needs index if it's not and a transform to know where to drop it
     {
         LootSpawner.SpawnLoot(lootNum, amount, dropPos); //spawns the loot
         if (swapItem) swapLoot = AllLoot.Empty(); //remove it from swapLoot slot
         if (!swapItem) Remove(loots[index]); //currently unused, but the idea is the you can drop it directly from you inventory with a keyboard shortcut, remove it from inventory
     }
 
-    public static void RemoveEmpties() //if an item is empty, decrease the size of the list, only needed when closing inventory
+    public void RemoveEmpties() //if an item is empty, decrease the size of the list, only needed when closing inventory
     {
         foreach (Loot l in loots.ToArray()) //check if any loot in loots is empty, if it is remove it
         {
@@ -72,7 +72,7 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
         }
     }
 
-    static Loot NewInstance(Loot oldLoot) => new Loot(oldLoot.spritePath, //method to copy an item
+    Loot NewInstance(Loot oldLoot) => new Loot(oldLoot.spritePath, //method to copy an item
         oldLoot.meshPath,
         oldLoot.name,
         oldLoot.amount,
@@ -82,7 +82,7 @@ public static class Inventory //static cus only 1 inventory, only tedious to ref
         oldLoot.empty,
         oldLoot.num);
 
-    static Weapon NewWeaponInstance(Weapon oldWeapon) => new Weapon(NewInstance(oldWeapon), //method to copy a wepon
+    Weapon NewWeaponInstance(Weapon oldWeapon) => new Weapon(NewInstance(oldWeapon), //method to copy a wepon
         oldWeapon.dmg,
         oldWeapon.atkSpd,
         oldWeapon.bulletSpeed,

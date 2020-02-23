@@ -15,9 +15,13 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     GameObject currentHand; //save current hand button to update its text and remove it
     GameObject currentTemp; //same as above
 
+    public InventoryInstance Ii;
+    Inventory playerInv;
+
     private void Start()
     {
-        Inventory.swapLoot = AllLoot.Empty(); //set swap loot to empty for safety
+        playerInv = Ii.myInv;
+        playerInv.swapLoot = AllLoot.Empty(); //set swap loot to empty for safety
         OpenOrClose(false); //have inventory closed when starting
     }
 
@@ -59,10 +63,10 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
             Time.timeScale = 1;
         }
 
-        if (!open && !Inventory.swapLoot.empty) Inventory.Drop(Inventory.swapLoot.num, Inventory.swapLoot.amount, true, 0, GameObject.Find("Player").transform); //drop loot in swap loot slot if it's not empty
+        if (!open && !playerInv.swapLoot.empty) playerInv.Drop(playerInv.swapLoot.num, playerInv.swapLoot.amount, true, 0, GameObject.Find("Player").transform); //drop loot in swap loot slot if it's not empty
 
-        Inventory.swapLoot = AllLoot.Empty(); // set swap loot to empty for safety
-        Inventory.RemoveEmpties(); //remove all empty slots in inventory
+        playerInv.swapLoot = AllLoot.Empty(); // set swap loot to empty for safety
+        playerInv.RemoveEmpties(); //remove all empty slots in inventory
     }
 
     void LoadItems() //create all buttons and link the to their coresponding item
@@ -74,7 +78,7 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
         currentTemp = Instantiate(TempSlot); //same as above for swap loot
         currentTemp.transform.SetParent(transform);
 
-        for (int i = 1; i < Inventory.loots.Count; i++) //loop for each item in inventory, besides the first one which is the hand slot
+        for (int i = 1; i < playerInv.loots.Count; i++) //loop for each item in inventory, besides the first one which is the hand slot
         {
             GameObject newButt = Instantiate(itemButton); //create the gameobject
             newButt.transform.SetParent(transform.GetChild(0)); //give it the correct parent for sorting

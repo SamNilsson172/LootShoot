@@ -13,7 +13,7 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
-        SaveFunctions.Load();
+        GetComponent<SaveFunctions>().Load(GetComponent<InventoryInstance>().myInv);
     }
 
     // Update is called once per frame

@@ -20,9 +20,9 @@ public class LootInstance : MonoBehaviour //behaviour of loot as a game object
         name = thisLoot.name + "(loot instance)";
     }
 
-    public void AddToInventory() //if you pick up the items
+    public void AddToInventory(Inventory inv) //if you pick up the items
     {
-        if (!Inventory.Add(thisLoot)) //tries to add it, and if it didn't work
+        if (!inv.Add(thisLoot)) //tries to add it, and if it didn't work
             Debug.Log("Inventory full"); //error message for not working
         else //if it worked
         {

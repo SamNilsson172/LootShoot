@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 2268520769401376353}
+  player: {fileID: 2268520768373427298}
 --- !u!1 &2268520767842870689
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9244ed8965652bd47b487fc35b18b8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iI: {fileID: 1040955439651942260}
 --- !u!1 &2268520768035677085
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2268520768146890446}
+  Ii: {fileID: 1040955439651942260}
 --- !u!1 &2268520768239587735
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +840,8 @@ GameObject:
   - component: {fileID: 2268520768373427294}
   - component: {fileID: 2268520768373427292}
   - component: {fileID: 2268520768373427296}
+  - component: {fileID: 1040955439651942260}
+  - component: {fileID: 6360664963538856321}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -950,6 +955,30 @@ MonoBehaviour:
   cameraAngle: {fileID: 2268520769241681848}
   rb: {fileID: 2268520768373427292}
   jumpForece: 3
+--- !u!114 &1040955439651942260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268520768373427298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf1e618aa03e644a9761eb7e3b6858c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6360664963538856321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268520768373427298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd802a7fe4bdf44befa4c82b1ae095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2268520769008081629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mf: {fileID: 2268520769183080509}
   mr: {fileID: 2268520769183080510}
+  Ii: {fileID: 1040955439651942260}
 --- !u!1 &2268520769226949049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1573,7 @@ MonoBehaviour:
   HandSlot: {fileID: 8367675554072100040, guid: 720145c0dcb253042b94ca2674c03aa7,
     type: 3}
   TempSlot: {fileID: 621998811742431222, guid: 73010711ef6d9b94a814c6a0f5b47cbe, type: 3}
+  Ii: {fileID: 1040955439651942260}
 --- !u!1 &2268520769424546477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 2268520769401376353}
+  player: {fileID: 2268520768373427298}
 --- !u!1 &2268520769490927708
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,15 +5,23 @@ using UnityEngine;
 public class Shoot : MonoBehaviour //lets you shoot when you have a weapon in your hand
 {
     float timer = float.MaxValue; //time since your last shot
+    public InventoryInstance iI;
+    Inventory inv;
+
+    private void Start()
+    {
+        inv = iI.myInv;
+    }
+
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime; //increase the timer
-        if (Inventory.loots.Count > 0) //if a loot instance is in your hand
+        if (inv.loots.Count > 0) //if a loot instance is in your hand
         {
-            if (Inventory.loots[0].weapon && Input.GetButton("Fire1")) //if a weapon is in hand and your pressing the shoot button
+            if (inv.loots[0].weapon && Input.GetButton("Fire1")) //if a weapon is in hand and your pressing the shoot button
             {
-                Weapon weapon = (Weapon)Inventory.loots[0]; //convert loot to weapon
+                Weapon weapon = (Weapon)inv.loots[0]; //convert loot to weapon
                 if (timer >= weapon.atkSpd) //check if your allowed to shoot according to attack speed
                 {
                     timer = 0; //reset timer to wait for next attack

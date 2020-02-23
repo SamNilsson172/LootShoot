@@ -11,7 +11,8 @@ public class LoadLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SaveFunctions.Save();
+            Inventory inv = other.GetComponent<InventoryInstance>().myInv;
+            other.GetComponent<SaveFunctions>().Save(inv);
             SceneManager.LoadScene(LevelName, LoadSceneMode.Single);
         }
     }

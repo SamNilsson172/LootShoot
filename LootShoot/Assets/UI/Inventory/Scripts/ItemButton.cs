@@ -8,20 +8,22 @@ public class ItemButton : MonoBehaviour
     public int index; //what index it has in inventory
     public Text text;
     public Image image;
+    Inventory playerinv;
 
     private void Start()
     {
-
+        print(GameObject.Find("Player").name);
+        playerinv = GameObject.Find("Player").GetComponent<InventoryInstance>().myInv;
     }
 
     public void UpdateText() //updates text
     {
-        if (Inventory.loots.Count > 0) //if inventory contains something, if the text reads button somthings fucked
+        if (playerinv.loots.Count > 0) //if inventory contains something, if the text reads button somthings fucked
         {
-            if (!Inventory.loots[index].empty)
+            if (!playerinv.loots[index].empty)
             {
-                text.text = Inventory.loots[index].name + "\r\n" + Inventory.loots[index].amount + " x"; //if item in not empty, set the text to the items name
-                image.sprite = Resources.Load<Sprite>(Inventory.loots[index].spritePath);
+                text.text = playerinv.loots[index].name + "\r\n" + playerinv.loots[index].amount + " x"; //if item in not empty, set the text to the items name
+                image.sprite = Resources.Load<Sprite>(playerinv.loots[index].spritePath);
             }
             else
             {
@@ -33,9 +35,9 @@ public class ItemButton : MonoBehaviour
 
     public void Swap() //swaps stuff
     {
-        if (Inventory.loots.Count > 0) //hand buton still exists even if inventory is empty, so make sure it's not to swap
+        if (playerinv.loots.Count > 0) //hand buton still exists even if inventory is empty, so make sure it's not to swap
         {
-            Inventory.Swap(index);
+            playerinv.Swap(index);
             GameObject.Find("Inventory").GetComponent<OpenInventory>().MasterUpdate(); //update all text when swap has occured
         }
     }
