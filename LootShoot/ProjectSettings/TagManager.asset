@@ -7,7 +7,7 @@ TagManager:
   - Loot
   - Enemy
   - Ground
-  - Chest
+  - Menu
   layers:
   - Default
   - TransparentFX

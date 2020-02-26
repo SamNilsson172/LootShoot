@@ -9,6 +9,7 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
     public LayerMask layerMask;
     bool loot = false;
     bool enemy = false;
+    bool menu = false;
     public Text lootText;
     public Text enemyText;
     public Text enemyHp;
@@ -17,6 +18,13 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
     RaycastHit hit;
     LootInstance lootLookingAt;
     EnemyBehaviour enemyBehaviour;
+    OpenMenu menuObj;
+
+    Inventory playerInv;
+    private void Start()
+    {
+        playerInv = GameObject.Find("Player").GetComponent<InventoryInstance>().myInv;
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +34,7 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
         {
             loot = false;
             enemy = false;
+            menu = false;
             timer = 0;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 25, layerMask))
             {
@@ -33,13 +42,17 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
                 {
                     lootLookingAt = hit.transform.gameObject.GetComponent<LootInstance>();
                     loot = true;
-                    Debug.Log("Looking at loot");
                 }
                 if (hit.transform.tag == "Enemy")
                 {
                     enemyBehaviour = hit.transform.gameObject.GetComponent<EnemyBehaviour>();
-                    Debug.Log("Looking at enemy");
                     enemy = true;
+                }
+                if (hit.transform.CompareTag("Menu"))
+                {
+                    menuObj = hit.transform.gameObject.GetComponent<OpenMenu>();
+                    menu = true;
+
                 }
             }
         }
@@ -49,7 +62,7 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
             if (Input.GetKeyDown(KeyCode.E))
             {
                 loot = false;
-                lootLookingAt.AddToInventory(GetComponent<InventoryInstance>().myInv);
+                lootLookingAt.AddToInventory(playerInv);
             }
             lootText.text = lootLookingAt.name + "\r\n" + lootLookingAt.amount + " x" + "\r\n" + "Press E";
         }
@@ -68,5 +81,16 @@ public class WhatImILookingAt : MonoBehaviour //defines what your looking at and
             enemyHp.text = "";
             enemyCanvas.alpha = 0;
         }
+
+        if (menu)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                print("open");
+                menuObj.Open(true);
+            }
+            lootText.text = menuObj.name + "\r\n" + "Press E";
+        }
+        else lootText.text = "";
     }
 }

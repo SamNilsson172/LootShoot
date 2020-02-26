@@ -10,9 +10,8 @@ public class ItemButton : MonoBehaviour
     public Image image;
     Inventory playerinv;
 
-    private void Start()
+    private void Awake() //called before master update in start
     {
-        print(GameObject.Find("Player").name);
         playerinv = GameObject.Find("Player").GetComponent<InventoryInstance>().myInv;
     }
 

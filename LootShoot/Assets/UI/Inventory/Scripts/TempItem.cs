@@ -8,7 +8,7 @@ public class TempItem : MonoBehaviour //script for swapLootSlot
     public InventoryInstance Ii;
     Inventory playerInv;
 
-    private void Start()
+    private void Awake()
     {
         playerInv = GameObject.Find("Player").GetComponent<InventoryInstance>().myInv;
     }

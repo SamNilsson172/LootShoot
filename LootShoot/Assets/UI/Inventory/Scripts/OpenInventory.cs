@@ -8,7 +8,7 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     public Move move;
     public Shoot shoot; //players shoot script, pause when inventory is open
     public CanvasGroup canvas; //get canvas group to make UI stuff invisible
-    bool open; //if inventory is visable  or not
+    public bool open; //if inventory is visable  or not
     public GameObject itemButton; //prefab for inventory buttons
     public GameObject HandSlot; //prefab for hand button
     public GameObject TempSlot; // prefan for sawp loot nutton
@@ -22,7 +22,7 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     {
         playerInv = Ii.myInv;
         playerInv.swapLoot = AllLoot.Empty(); //set swap loot to empty for safety
-        OpenOrClose(false); //have inventory closed when starting
+        OpenOrClose(false, true); //have inventory closed when starting
     }
 
     // Update is called once per frame
@@ -37,36 +37,39 @@ public class OpenInventory : MonoBehaviour //handels gameobjects in inventory
     public void Show()
     {
         open = !open; //change between open and close
-        OpenOrClose(open); //open or close it depending on open variable
+        OpenOrClose(open, true); //open or close it depending on open variable
     }
 
-    void OpenOrClose(bool open) //change values depending on if inventory is closed or open
+    public void OpenOrClose(bool open, bool inventory) //change values depending on if inventory is closed or open
     {
-        canvas.alpha = open ? 1 : 0; //set visability 
-        canvas.interactable = open; //set interactability
-        canvas.blocksRaycasts = open; //set raycast blockage
         Cursor.visible = open; //set cursor visability
         Cursor.lockState = open ? CursorLockMode.None : CursorLockMode.Locked; //set if cursor is movable
         look.enabled = !open; //enable and diasble scripts
         move.enabled = !open;
         shoot.enabled = !open;
 
-        if (open)
+        if (open && inventory)
         {
             LoadItems(); //create buttons
             MasterUpdate(); //update buttons text
             Time.timeScale = 0;
         }
-        if (!open)
+        if (!open && inventory)
         {
             RemoveItems(); //remove all items
             Time.timeScale = 1;
         }
 
-        if (!open && !playerInv.swapLoot.empty) playerInv.Drop(playerInv.swapLoot.num, playerInv.swapLoot.amount, true, 0, GameObject.Find("Player").transform); //drop loot in swap loot slot if it's not empty
+        if (!open && !playerInv.swapLoot.empty && inventory) playerInv.Drop(playerInv.swapLoot.num, playerInv.swapLoot.amount, true, 0, GameObject.Find("Player").transform); //drop loot in swap loot slot if it's not empty
 
-        playerInv.swapLoot = AllLoot.Empty(); // set swap loot to empty for safety
-        playerInv.RemoveEmpties(); //remove all empty slots in inventory
+        if (inventory)
+        {
+            playerInv.swapLoot = AllLoot.Empty(); // set swap loot to empty for safety
+            playerInv.RemoveEmpties(); //remove all empty slots in inventory
+            canvas.alpha = open ? 1 : 0; //set visability 
+            canvas.interactable = open; //set interactability
+            canvas.blocksRaycasts = open; //set raycast blockage
+        }
     }
 
     void LoadItems() //create all buttons and link the to their coresponding item
